@@ -20,25 +20,17 @@ The simulation is interactive and allows you to customize all key parameters.
 - Python 3.x (tested with Python 3.7+)
 - No external dependencies
 
----
-
 ## How to Run
 
 1. Clone or download this repository.
 2. Open a terminal in the project directory.
 3. Run the simulation:
-
-```sh
-python simulator.py
-```
-
----
+        >python simulator.py
 
 ## Example Usage
 
 When you run the program, you will see prompts like:
 
-```
 Welcome to the Load Balancer Simulation
 
 Enter simulation time in seconds: 100
@@ -49,16 +41,16 @@ Do you want to pick the service rate values? (yes/no): no
 Do you want to pick the arrival rate? (yes/no): no
 
 results are:
- customers served - 95,
- customers rejected - 5,
- T_end - 99.8,
- average wait time -  0.53,
- average_service_time - 0.97
-```
+ customers served - 98,
+ customers rejected - 0,
+ T_end ~ 95.3,
+ average wait time ~  0.068,
+ average_service_time ~ 0.53
 
-You can answer "yes" to any of the parameter questions to enter custom values for each server.
+ <img width="855" height="379" alt="image" src="https://github.com/user-attachments/assets/c8f49baa-b1c3-4f42-b668-26006462f8ee" />
 
----
+
+Alternatively you can answer "yes" to any of the parameter questions to enter custom values for each server.
 
 ## Parameter Descriptions
 
