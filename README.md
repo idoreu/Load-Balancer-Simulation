@@ -33,19 +33,19 @@ When you run the program, you will see prompts like:
 
 Welcome to the Load Balancer Simulation
 
-Enter simulation time in seconds: 100
-Enter number of servers: 3
-Do you want to pick the probability values? (yes/no): no
-Do you want to pick the queue size values? (yes/no): no
-Do you want to pick the service rate values? (yes/no): no
-Do you want to pick the arrival rate? (yes/no): no
+Enter simulation time in seconds: 100  
+Enter number of servers: 3  
+Do you want to pick the probability values? (yes/no): no  
+Do you want to pick the queue size values? (yes/no): no  
+Do you want to pick the service rate values? (yes/no): no  
+Do you want to pick the arrival rate? (yes/no): no  
 
-results are:
- customers served - 98,
- customers rejected - 0,
- T_end ~ 95.3,
- average wait time ~  0.068,
- average_service_time ~ 0.53
+results are:  
+ customers served - 98,  
+ customers rejected - 0,  
+ T_end ~ 95.3,  
+ average wait time ~  0.068,  
+ average_service_time ~ 0.53  
 
  <img width="855" height="379" alt="image" src="https://github.com/user-attachments/assets/c8f49baa-b1c3-4f42-b668-26006462f8ee" />
 
@@ -56,12 +56,10 @@ Alternatively you can answer "yes" to any of the parameter questions to enter cu
 
 - **Simulation time**: Total time (in seconds) to run the simulation.
 - **Number of servers**: How many servers the load balancer will distribute requests to.
-- **Probabilities**: The probability that a new request is assigned to each server. If you enter custom values, they will be normalized to sum to 1.
+- **Probabilities**: The probability that a new request is assigned to each server. Enter any non negative values.
 - **Queue sizes**: Maximum number of requests each server can hold (including the one being served).
 - **Service rates**: The average rate at which each server processes requests (higher means faster).
 - **Arrival rate**: The average rate at which new requests arrive.
-
----
 
 ## Output
 
@@ -73,8 +71,6 @@ After the simulation, you will see:
 - **Average wait time**: Average time a customer spent waiting in a queue.
 - **Average service time**: Average time a customer spent being served.
 
----
-
 ## Customization
 
 You can modify the code to add more features, such as:
@@ -82,14 +78,9 @@ You can modify the code to add more features, such as:
 - Logging to a file
 - Visualization of queue lengths over time
 
----
-
 ## License
 
 This project is provided for educational purposes.
 
----
-
 ## Author
 
-[Your Name Here]
