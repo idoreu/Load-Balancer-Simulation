@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import random
-import sys
 import time
 import heapq
 
@@ -84,18 +83,55 @@ def load_balancer_simulation(simulation_time, servers_num, arrival_rate, probabi
     
     return customers_served, customers_rejected, T_end, avarage_waite_time, avarage_service_time
 
+def creat_a_list(type_of_list : str, default_value, size : int, cast_type=float):
+    user_list = []
+    user_answer = input(f"Do you want to pick the {type_of_list} values? (yes/no): ").strip().lower()
+    if user_answer in ("yes" , "y"):
+        print(f"Enter {type_of_list} for each server: ")
+        for i in range(size):
+            inp = input(f"{type_of_list} for server {i+1}: ")
+            user_list.append(cast_type(inp) if inp else default_value)
+    else:
+        user_list = [default_value] * size
+    return user_list
 
 if __name__== "__main__":
-    simulation_time = float(sys.argv[1])
-    servers_num = int(sys.argv[2])
+    print("Welcome to the Load Balancer Simulation\n")
+    simulation_time = float(input("Enter simulation time in seconds: "))
+    servers_num = int(input("Enter number of servers: "))
+    default_probability = (1.0 / servers_num) if servers_num > 0 else 0
+    default_queue_size = 10
+    default_service_rate = 2.0
     probabilities = []
     queues = []
     service_rates = []
-    arrival_rate = float(sys.argv[servers_num +3])
-    for n in range(servers_num):
-        probabilities.append(float(sys.argv[n+3]))
-        queues.append(int(sys.argv[n + servers_num + 4])+1)
-        service_rates.append(float(sys.argv[n + 2*servers_num + 4]))
+
+    # Collecting probabilities, queues and service rates from user input
+    probabilities_lst = input("Do you want to pick the probability values? (yes/no): ").strip().lower()
+    if probabilities_lst in ("yes", "y"):
+        sumup = 0.0
+        for i in range(servers_num):
+            inp = input(f"probability for server {i+1}: ")
+            sumup += float(inp) if inp else 0.0
+            probabilities.append(float(inp) if inp else default_probability)
+        if sumup > 0.0:
+            for i in range(servers_num):
+                probabilities[i] /= sumup
+    else:
+        probabilities = [default_probability]*servers_num
+
+    queue_lst = "queue size"
+    queues = creat_a_list(queue_lst, default_queue_size, servers_num, int)
+    user_service_rates_lst = "service rate"
+    service_rates = creat_a_list(user_service_rates_lst, default_service_rate, servers_num, float)
+    
+    arrival_rate = 1.0  # Default arrival rate
+    user_arival_rate = input("Do you want to pick the arrival rate? (yes/no): ").strip().lower()
+    if user_arival_rate in ("yes", "y"):   
+        arrival_rate = float(input("Enter the arrival rate (default is 1.0): ") or 1.0)
+    # 
+
+
     customers_served, customers_rejected, T_end, avarage_waite_time, avarage_service_time = load_balancer_simulation(simulation_time, servers_num,arrival_rate, probabilities, queues, service_rates)
-    print(f" results are:\n customers served - {customers_served},\n customers rejected - {customers_rejected},\n T_end - {T_end},")
-    print(f" average waite time -  {avarage_waite_time},\n avarage_service_time - {avarage_service_time}\n")
+    print(f"\n results are:\n customers served - {customers_served},\n customers rejected - {customers_rejected},\n T_end - {T_end},")
+    print(f" average wait time -  {avarage_waite_time},\n average_service_time - {avarage_service_time}\n")
